@@ -1,0 +1,11 @@
+node_modules
+dist
+.firebase
+*.log
+.DS_Store
+node_modules/
+.env
+.env.*
+dist/
+build/
+.vscode/

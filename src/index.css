@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #14213d;
+  --paper: #f3f6fb;
+  --card: #ffffff;
+  --line: #d6deeb;
+  --muted: #56627c;
+  --dot: #c9d3e4;
+  --lens: #14b8a6;
+  --lens-ink: #04302b;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8eef9;
+    --paper: #0d1424;
+    --card: #141e33;
+    --line: #26324d;
+    --muted: #9aa7c2;
+    --dot: #1f2a43;
+    color-scheme: dark;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--lens);
+  color: var(--lens-ink);
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--lens);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Highlighter-pen marks for the words that matter to the current visitor */
+.hl {
+  color: inherit;
+  background: linear-gradient(
+    transparent 58%,
+    color-mix(in srgb, var(--lens) 38%, transparent) 58%
+  );
+  padding: 0 0.1em;
+  transition: background 0.5s ease;
+}
+
+.dim .hl {
+  background: none;
+  font-weight: 500;
+}
+
+/* Data flowing along the hero diagram */
+.flow {
+  stroke-dasharray: 5 9;
+  animation: flow 1.1s linear infinite;
+}
+@keyframes flow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+.pulse-dot {
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.7); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .flow, .pulse-dot { animation: none; }
+}
